@@ -6,13 +6,16 @@ const gistsJSON = require('../data/sample_gist.json');
 class GistAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = '';
+        this.baseURL = 'https://api.github.com';
     }
 
     initialise(config){ }
 
+    async getGistsByUsername(username) {
+        return await this.get(`/users/${username}/gists`);
+    }
+
     getGistById(id) {
-        console.log(id);
         const gists = _.filter(gistsJSON, { id });
         return gists[0];
     }
