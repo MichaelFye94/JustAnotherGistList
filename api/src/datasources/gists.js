@@ -12,12 +12,25 @@ class GistAPI extends RESTDataSource {
     initialise(config){ }
 
     async getGistsByUsername(username) {
-        return await this.get(`/users/${username}/gists`);
+        const data = await this.get(`/users/${username}/gists`);
+        const gists = [];
+        // Convert gists `files` into a format that is more usable by graphQL
+        _.forEach(data, (value) => {
+            gists.push(this.convertFileFormat(value));
+        })
+        return gists;
     }
 
-    getGistById(id) {
-        const gists = _.filter(gistsJSON, { id });
-        return gists[0];
+    async getGistById(id) {
+        const data = await this.get(`/gists/${id}`);
+        const gist = this.convertFileFormat(data);
+        return gist;
+    }
+
+    convertFileFormat(gist) {
+        const convertedFile = gist;
+        convertedFile.files = Object.values(gist.files);
+        return convertedFile;
     }
 }
 

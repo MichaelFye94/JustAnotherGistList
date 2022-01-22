@@ -1,4 +1,5 @@
 const { gql } = require('apollo-server');
+const { GraphQLJSONObject } = require('graphql-type-json');
 
 module.exports = gql`
 type Query {
@@ -21,4 +22,12 @@ type Gist {
     comments: Int
     comments_url: String
     truncated: Boolean
+    files: [File]
+}
+type File {
+    filename: String
+    type: String
+    language: String
+    raw_url: String
+    size: Int
 }`
