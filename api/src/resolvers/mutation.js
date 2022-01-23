@@ -1,8 +1,12 @@
 module.exports = {
-    addFavorite: (parent, { favorite }, { dataSources }, info) => {
-        return dataSources.favoritesAPI.addFavorite(favorite);
+    async addFavorite(parent, { id }, { dataSources }, info) {
+        const gist = await dataSources.gistAPI.getGistById(id);
+        if(gist) {
+            return await dataSources.favoritesAPI.addFavorite(gist);
+        }
+        return null;
     },
-    deleteFavorite: (parent, { id }, { dataSources }, info) => {
-        return dataSources.favoritesAPI.deleteFavorite(id);
+    async deleteFavorite(parent, { id }, { dataSources }, info) {
+        return await dataSources.favoritesAPI.deleteFavorite(id);
     }
 }

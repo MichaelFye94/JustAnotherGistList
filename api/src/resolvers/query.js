@@ -1,11 +1,11 @@
 module.exports = {
-    getGistsByUsername: (parent, { username }, { dataSources }, info) => {
-        return dataSources.gistAPI.getGistsByUsername(username);
+    async getGistsByUsername(parent, { username }, { dataSources }, info) {
+        return await dataSources.gistAPI.getGistsByUsername(username);
     },
-    getGistById: (parent, { id }, { dataSources }, info) => {
-        return dataSources.gistAPI.getGistById(id);
+    async getGistById(parent, { id }, { dataSources }, info) {
+        return await dataSources.gistAPI.getGistById(id);
     },
-    getFavorites: (parent, args, { dataSources }, info) => {
-        return dataSources.favoritesAPI.getFavorites();
+    async getFavorites(parent, args, { dataSources }, info) {
+        return await dataSources.favoritesAPI.getFavorites();
     }
 }
