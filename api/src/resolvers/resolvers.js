@@ -1,6 +1,9 @@
-const { GraphQLJSONObject } = require('graphql-type-json');
 const Query = require('./query');
+const Gist = require('./gist');
+const Mutation = require('./mutation');
 
 module.exports = {
-    Query
+    Query,
+    Gist,
+    Mutation
 }

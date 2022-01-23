@@ -4,5 +4,8 @@ module.exports = {
     },
     getGistById: (parent, { id }, { dataSources }, info) => {
         return dataSources.gistAPI.getGistById(id);
+    },
+    getFavorites: (parent, args, { dataSources }, info) => {
+        return dataSources.favoritesAPI.getFavorites();
     }
 }

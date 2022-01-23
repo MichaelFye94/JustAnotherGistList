@@ -1,16 +1,20 @@
 const { gql } = require('apollo-server');
-const { GraphQLJSONObject } = require('graphql-type-json');
 
 module.exports = gql`
 type Query {
     getGistsByUsername(username: String): [Gist]
     getGistById(id: ID): Gist
+    getFavorites: [Gist]
 }
-type Gist {
+type Mutation {
+    addFavorite(favorite: FavoriteInput): ID
+    deleteFavorite(id: ID): ID
+}
+input FavoriteInput {
     id: ID!
-    node_id: ID!
+    node_id: ID
     url: String
-    foks_url: String
+    forks_url: String
     commits_url: String
     git_pull_url: String
     git_push_url: String
@@ -22,6 +26,33 @@ type Gist {
     comments: Int
     comments_url: String
     truncated: Boolean
+    isFavorited: Boolean
+    files: [FileInput]
+}
+input FileInput {
+    filename: String
+    type: String
+    language: String
+    raw_url: String
+    size: Int
+}
+type Gist {
+    id: ID!
+    node_id: ID!
+    url: String
+    forks_url: String
+    commits_url: String
+    git_pull_url: String
+    git_push_url: String
+    html_url: String
+    public: Boolean
+    created_at: String
+    updated_at: String
+    description: String
+    comments: Int
+    comments_url: String
+    truncated: Boolean
+    isFavorited: Boolean
     files: [File]
 }
 type File {

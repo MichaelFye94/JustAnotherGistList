@@ -1,8 +1,6 @@
 const { RESTDataSource } = require('apollo-datasource-rest');
 const _ = require('lodash');
 
-const gistsJSON = require('../data/sample_gist.json');
-
 class GistAPI extends RESTDataSource {
     constructor() {
         super();
