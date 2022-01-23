@@ -1,5 +1,5 @@
 module.exports = {
-    async isFavorited(gist, args, { dataSources }) {
-        return await dataSources.favoritesAPI.getIsGistFavorited(gist.id);
+    async isFavorited({ id }, args, { dataSources }) {
+        return await dataSources.favoritesAPI.getIsGistFavorited(id);
     }
 }

@@ -1,19 +1,28 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter } from "react-router-dom"
 
 import Navbar from './components/navigation/navbar';
-import Home from './components/pages/home/home';
-import Favorites from './components/pages/favorites/favorites';
+import AppRoutes from './app.routes';
 import './App.css';
 
-function App() {
+import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from "@apollo/client"
+
+// Initialize Apollo Client
+const client = new ApolloClient({
+  cache: new InMemoryCache(),
+  link: new HttpLink({
+    uri: "http://localhost:4000/" // your graphql server link
+  }),
+  credentials: "same-origin",
+})
+
+function App () {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route exact path='/' element={<Home />} />
-        <Route path='/favorites' element={<Favorites />} />
-      </Routes>
-    </BrowserRouter>
+    <ApolloProvider client={client}>
+      <BrowserRouter>
+        <Navbar />
+        <AppRoutes />
+      </BrowserRouter>
+    </ApolloProvider>
   );
 }
 
