@@ -7,7 +7,8 @@ import { USERGISTS } from '../../../graph/queries/userQueries.js';
 function UserPage () {
     const { username } = useParams();
     const { loading, error, data } = useQuery(USERGISTS, {
-        variables: { username: username }
+        variables: { username: username },
+        fetchPolicy: "no-cache"
     });
 
     if (loading) {

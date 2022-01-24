@@ -1,16 +1,16 @@
 import { BrowserRouter } from "react-router-dom"
-
+import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from "@apollo/client"
 import Navbar from './components/navigation/Navbar';
 import AppRoutes from './app.routes';
 import './App.css';
+import config from './config';
 
-import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from "@apollo/client"
 
 // Initialize Apollo Client
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: new HttpLink({
-    uri: "http://localhost:4000/" // your graphql server link
+    uri: config.apolloUrl // your graphql server link
   }),
   credentials: "same-origin",
 })

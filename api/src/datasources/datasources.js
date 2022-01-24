@@ -1,8 +1,9 @@
+const { MongoClient } = require('mongodb');
 const { GistsAPI, UsersAPI } = require('./rest/github');
 const FavoritesAPI = require('./mongo/favorites');
-const { MongoClient } = require('mongodb');
+const config = require ('../../config');
 
-const client = new MongoClient('mongodb://localhost:27017/jagl');
+const client = new MongoClient(`${config.mongoURL}/jagl`);
 client.connect();
 module.exports = () => ({
     gistsAPI: new GistsAPI(),
