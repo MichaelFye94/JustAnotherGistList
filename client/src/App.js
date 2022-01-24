@@ -10,7 +10,7 @@ import config from './config';
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: new HttpLink({
-    uri: config.apolloUrl // your graphql server link
+    uri: config.jaglURL // your graphql server link
   }),
   credentials: "same-origin",
 })
