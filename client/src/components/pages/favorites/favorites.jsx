@@ -9,9 +9,14 @@ function FavoritesPage () {
         return <p>Loading data...</p>
     }
     if (error) {
-        return <p>Error! {error.message}</p>
+        return (
+            <>
+                <BackButton />
+                <p>Error! {error.message}</p>
+            </>
+        );
     }
-    
+
     return (
         <>
             <BackButton />
