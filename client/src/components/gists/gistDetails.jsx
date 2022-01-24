@@ -19,7 +19,12 @@ function GistDetails () {
         return <p>Loading Gist...</p>
     }
     if (error) {
-        return <p>Error! {error.message}</p>
+        return (
+            <>
+                <BackButton />
+                <p>Error! {error.message}</p>
+            </>
+        )
     }
 
     const gist = data.getGistById;
