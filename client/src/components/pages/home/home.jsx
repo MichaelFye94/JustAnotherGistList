@@ -1,7 +1,10 @@
-function Home() {
+function HomePage () {
     return (
-        <div>Home works!</div>
+        <>
+            <h1>Just Another Gist List!</h1>
+            <p>Just imagine a nice friendly dashboard :)</p>
+        </>
     );
 }
 
-export default Home;
+export default HomePage;

@@ -1,11 +1,28 @@
+import { Button, Card, CardActions, CardContent, Typography } from "@material-ui/core";
+import { useNavigate } from "react-router-dom";
+import FavoriteIcon from "./FavoriteIcon";
+import './GistSummary.css';
+
 function GistSummary({ gist }) {
-    console.log(gist);
+    const navigate = useNavigate();
+
     return (
-        <div>
-            <h3>{gist.id}</h3>
-            <p>{gist.description}</p>
-            <p>{gist.created_at}</p>
-        </div>
+        <Card className="summary-root">
+            <CardContent>
+                <div className="summary-header">
+                    <Typography variant="h5" component="h2">
+                        {gist.description || "No Description Available..."}
+                    </Typography>
+                    <FavoriteIcon gist={gist} />
+                </div>
+                <Typography>
+                    Created on: {new Date(gist.created_at).toLocaleDateString()}
+                </Typography>
+            </CardContent>
+            <CardActions>
+                <Button size="small" onClick={() => navigate(`/gist/${gist.id}`)}>Details</Button>
+            </CardActions>
+        </Card>
     )
 }
 

@@ -11,8 +11,6 @@ class FavoritesAPI extends MongoDataSource {
     }
 
     async addFavorite(favorite) {
-        // Don't use MongoDB's auto generated id, so duplicates for sure can't be added. Just in case (tm)
-        favorite._id = favorite.id;
         const result = await this.collection.insertOne(favorite);
         return result.insertedId ? favorite.id : null;
     }

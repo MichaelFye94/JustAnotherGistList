@@ -1,4 +1,5 @@
-import GistSummary from "./gistSummary";
+import GistSummary from "./GistSummary";
+
 function GistList ({ gists }) {
     return gists.map((gist) => (
         <GistSummary

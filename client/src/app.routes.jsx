@@ -1,17 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from './components/pages/home/home';
-import User from './components/pages/users/user';
-import Favorites from './components/pages/favorites/favorites';
-import GistDetails from './components/gists/gistDetails';
+import HomePage from './components/pages/home/Home';
+import UserPage from './components/pages/users/User';
+import FavoritesPage from './components/pages/favorites/Favorites';
+import GistDetails from './components/gists/GistDetails';
 
 function AppRoutes() {
     return (
         <Routes>
-          <Route exact path='/' element={<Home />} />
-          <Route path='/favorites' element={<Favorites />} />
-          <Route path='/favorites/:gist_id' element={<GistDetails />} />
-          <Route path='/users/:username' element={<User />} />
-          <Route path='/users/:username/gist/:gist_id' element={<GistDetails />} />
+          <Route exact path='/' element={<HomePage />} />
+          <Route path='/favorites' element={<FavoritesPage />} />
+          <Route path='/users/:username' element={<UserPage />} />
+          <Route path='/gist/:gist_id' element={<GistDetails />} />
         </Routes>
     );
 }

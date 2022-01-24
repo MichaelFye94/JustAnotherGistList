@@ -1,0 +1,9 @@
+.details-root {
+    margin: 1em;
+}
+
+.details-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

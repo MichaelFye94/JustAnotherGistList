@@ -1,25 +1,20 @@
+
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import PageLink from './PageLink';
+import UserSearch from './UserSearch';
+import './Navbar.css';
 
 function Navbar () {
+
     return (
         <AppBar color='primary' position='static'>
-            <Toolbar>
-                <Typography variant='h4'>
+            <Toolbar className='navbar'>
+                <Typography variant='h6'>
                     Just Another Gist List
                 </Typography>
-                <div>
-                    <Typography>
-                        <Link to='/'>
-                            Home
-                        </Link>
-                    </Typography>
-                    <Typography>
-                        <Link to='/favorites'>
-                            Favorites
-                        </Link>
-                    </Typography>
-                </div>
+                <PageLink route='/' pageName='Home' />
+                <PageLink route='/favorites' pageName='Favorites' />
+                <UserSearch />
             </Toolbar>
         </AppBar>
     );

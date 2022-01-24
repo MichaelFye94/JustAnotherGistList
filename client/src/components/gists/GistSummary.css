@@ -1,0 +1,9 @@
+.summary-root {
+    margin: 1em;
+}
+
+.summary-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
